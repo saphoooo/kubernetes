@@ -1,10 +1,12 @@
+![Techno Monkeys](https://user-images.githubusercontent.com/13923756/75386722-778ffe00-58e2-11ea-95c9-fa0c8eaf54fe.png)
+
 # Kubernetes
 
 ## Intro
 
 > **Avertissement** : je ne sais pas où tout ça va me mener... On verra bien :-)
 
-Kubernetes est génial, pas besoin d'être ingénieur chez Google ou chercheur au MIT pour en tirer le meilleur parti.
+Kubernetes est génial, et pas besoin d'être ingénieur chez Google ou chercheur au MIT pour en tirer le meilleur parti.
 
 Mais j'entends aussi dire que Kubernetes est compliqué. Personnellement, c'est monter une étagère IKEA que je trouve compliqué, à côté de ça Kubernetes est limpide. Si vous savez monter une étagère IKEA, alors vous saurez utiliser Kubernetes.
 
@@ -55,13 +57,13 @@ Si je devais faire une analogie (et c'est une analogie que je fais souvent), on 
 
 Représetez-vous un processus comme un individu. Il est dans une boutique remplie d'autres personnes (qui sont eux-aussi d'autres procesus du même système). Maintenant, placer le processus dans une cabine d'essayage. Dans cet espace confiné, il se voit comme étant la seule personne du magazin ; il n'a plus conscience des autres, pourtant les autres personnes sont toujours là.
 
-Maintenant prenons cet autre exemple : le processus est une personne qui travaille dans un openspace. Il y a d'autres personne qui travaillent avec lui dans le même opensapce, et afin qu'ils ne se gênent pas les uns les autres, on met une cloison autour de notre processus (à ce stade je devrais lui donner un nom, mettons qu'il s'appelle Calvin).
+Maintenant prenons un autre exemple : le processus est une personne qui travaille dans un open space. Il y a d'autres personnes qui travaillent avec lui dans le même open sapce, et afin qu'ils ne se gênent pas les uns les autres, on met une cloison autour de notre processus (à ce stade je devrais lui donner un nom, mettons qu'il s'appelle Calvin).
 
-Il est à présent seul et peut, par exemple, téléphoner sans perturber les autres. Mais quand Calvin est au téléphone, il aime faire les 100 pas. Son espace confiné étant trop exigu, il commence par pousser les cloisons (pour le bien de mon histoire, ce sont des cloisons fabriquées dans un matériaux révolutionnaire et extensibles à l'infini). Il va finir par pousser les cloisons jusqu'à arriver aux murs physiques de l'openspace, et donc prendre tout l'espace disponible, au mépris des autres processus. Cependant ne le jugez pas trop durement, n'oubliez pas qu'il n'a pas conscience de l'existence des autres processus.
+Il est à présent seul et peut, par exemple, téléphoner sans perturber les autres. Mais quand Calvin est au téléphone, il aime faire les 100 pas. Son espace confiné étant trop exigu, il commence par pousser les cloisons (pour le bien de mon histoire, ce sont des cloisons fabriquées dans un matériaux révolutionnaire et extensibles à l'infini). Il va finir par pousser les cloisons jusqu'à arriver aux murs physiques de l'open space, et donc prendre tout l'espace disponible, au mépris des autres processus. Cependant ne le jugez pas trop durement, n'oubliez pas qu'il n'a pas conscience de l'existence des autres processus.
 
 Calvin n'a enfrein aucune règle : les namespaces ne font que limiter ce qu'il peut voir. Mais son comportement est des plus fâcheux pour les autres processus. C'est là qu'entre en jeu les *cgroups* (ou *control groups*) : les *cgroups* limitent ce que le processus peut faire.
 
-Calvin est dans l'openspace, et nous décidons à nouveau de mettre des cloisons entre lui et les autres processus : c'est notre namespace. Nous décidons également que cet espace fait 4m², ce qui empêche Calvin de pousser les cloisons pour se donner plus d'espace (tout en lui laissant un espace nécessaire pour faire ce qu'il a à faire) : arrivé à la limite que nous lui avons fixé, il ne peut pas aller plus loin, et ne risque plus de déranger les autres processus. Ce sont nos cgroups.
+Calvin est dans l'open space, et nous décidons à nouveau de mettre des cloisons entre lui et les autres processus : c'est notre namespace. Nous décidons également que cet espace fait 4m², ce qui empêche Calvin de pousser les cloisons pour se donner plus d'espace (tout en lui laissant un espace nécessaire pour faire ce qu'il a à faire) : arrivé à la limite que nous lui avons fixé, il ne peut pas aller plus loin, et ne risque plus de déranger les autres processus. Ce sont nos cgroups.
 
 Si nous revenons à notre système d'exploitation, les cgroups vont permettre 
 - de limiter les ressources qu'un processus peut consommer (mémoire)
@@ -80,4 +82,4 @@ Les namespaces ont fait leur entrée dans le noyau Linux en 2003, contre 2006 po
 
 Je suis au courant : peu de personnes utilisent Linux sur leur laptop (par contre, sur votre téléphone il y a des chances pour que ce soit différent si vous utilisez Android). Mais vous avez peut-être entendu parler de Docker Desktop, de WSL ; j'en reparlerai le temps venu, tout comme je vous parlerai de Minikube.
 
-Mais pour l'heure accordons nous sur ce point : quand vous faites tourner un conteneur Linux sous Windows ou sous Mac, vous l'exécuter en réalité dans une machine virtuelle, même si votre expérience utilisateur vous laisse penser le contraire (au passage merci aux ingénieurs de Docker d'avoir rendu cette magie si simple).
+Mais pour l'heure accordons nous sur ce point : quand vous faites tourner un conteneur Linux sous Windows ou sous Mac, vous l'exécutez en réalité dans une machine virtuelle, même si votre expérience utilisateur vous laisse penser le contraire (au passage merci aux ingénieurs de Docker d'avoir rendu cette magie si simple).
