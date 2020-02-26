@@ -1,4 +1,4 @@
-# kubernetes
+# Kubernetes
 
 ## Intro
 
@@ -20,7 +20,11 @@ Je ne sais pas ce qui vous pousse à apprendre Kubernetes, si c'est pour régler
 
 Le hic, c'est que dans un cas vous avez déjà (je l'espère) un bagage culturel conséquent, mais dans l'autre cas... pas nécessairement. Il n'y a pas de honte à ça, mais ça rend sans doute la courbe d'apprentissage un peu plus dure. Cependant, je vais essayer de tout expliquer le plus simplement possible, mais tout de même, un petit avertissement :
 
-> Vous savez ce que signifie RTFM ? Littéralement c'est *Read The Fucking Manual*. On voyait souvent ça sur les forums avant l'arrivée de Stack Overflow ; ça manquait peut-être un poil d'empathie et de bienveillance, cependant, car il y a un cependant, je trouve qu'il y a aussi une limite à l'empathie et à la bienveillance.
+## RTFM
+
+![RTFM](https://live.staticflickr.com/167/419976117_79fe0b10af_z.jpg)
+
+> Vous savez ce que signifie **RTFM** ? Littéralement c'est *Read The Fucking Manual*. On voyait souvent ça sur les forums avant l'arrivée de Stack Overflow ; ça manquait peut-être un poil d'empathie et de bienveillance, cependant, car il y a un cependant, je trouve qu'il y a aussi une limite à l'empathie et à la bienveillance.
 > Prenons un exemple qui sort du domaine informatique : imaginons que quelqu'un me demande à quoi sert une télécommande ; je veux bien lui expliquer en long, en large et en travers à quoi sert ce magnifique objet qui me permet de rester à pourrir sur mon canapé pour regarder la télé (oui, j'ai connu l'époque où les télécommandes n'existaient pas). Par contre, si cette même personne revient vers moi pour me demander à quoi sert la touche 6 sur la télécommande, alors là je ne pourrai plus rien pour elle. Quand on veut apprendre, se faire aider c'est bien, mais il faut aussi y mettre un peu du sien. That's life.
 
 Donc, j'en étais à : par où commencer ? Si je vous dis que Kubernetes est un orchestrateur de conteneurs et que vous ne comprennez ni "orchestrateur", ni "conteneur", alors ne paniquez pas, je vais faire les rappels qui s'imposent. Si vous connaissez déjà tout ça, rendez-vous quelque part plus loin.
