@@ -1,6 +1,6 @@
 # kubernetes
 
-# Intro
+## Intro
 
 **Avertissement** : je ne sais pas où tout ça va me mener... On verra bien :-)
 
@@ -14,7 +14,7 @@ Je vais prendre touuuut le temps nécessaire pour essayer de rendre ces concepts
 
 Comme je suis un blogueur et pas un Emile Zola, si j'écris comme je parle, personne ne m'en tiendra rigueur. Et puisqu'on est en ligne, j'utiliserai toutes les ressources que le web met gratuitement à ma disposition, c'est toute la beauté de la chose !
 
-# Par quoi commencer quand on veut apprendre Kubernetes ?
+## Par quoi commencer quand on veut apprendre Kubernetes ?
 
 Je ne sais pas ce qui vous pousse à apprendre Kubernetes, si c'est pour régler une bonne fois pour toutes les limitations que vous rencontrez avec les conteneurs, ou si c'est juste parce que c'est tendance et que vous êtes curieux ; l'un comme l'autre me vont.
 
@@ -25,7 +25,7 @@ Le hic, c'est que dans un cas vous avez déjà (je l'espère) un bagage culturel
 
 Donc, j'en étais à : par où commencer ? Si je vous dis que Kubernetes est un orchestrateur de conteneurs et que vous ne comprennez ni "orchestrateur", ni "conteneur", alors ne paniquez pas, je vais faire les rappels qui s'imposent. Si vous connaissez déjà tout ça, rendez-vous quelque part plus loin.
 
-# Vous avez dit conteneur ?
+## Vous avez dit conteneur ?
 
 Si vous pensez que conteneur rime avec Docker, alors vous n'avez pas tout à fait raison, sans avoir non plus complètement tord.
 
@@ -35,7 +35,7 @@ Alors qu'est-ce qu'un conteneur ? Pour faire simple, on peut se représenter ça
 
 Dans les années 70-80 (à l'époque où Starky et Hutch faisaient un tabac), quand les ordinateurs étaient encore rares et hors de prix, compiler et tester un binaire ou une librairie n'était pas quelque chose d'annodin et risquait d'endommager définitivement votre système (cher et rare). En isolant ce processus au niveau du système de fichiers, le système était protégé : *chroot* (pour *change root*) était né !
 
-## chroot vite fait
+### chroot vite fait
 
 Votre système d'exploitation a des librairies peut-être dans `/lib` et des binaires dans `/bin`. Si lors de la compilation d'un paquet vous modifiez une de ces libraires ou un de ces binaires, alors vous pouvez dire adieu à votre système.
 
@@ -45,7 +45,7 @@ Puis d'autres cas d'usage sont apparus : quand les ordinateurs ont commencé à 
 
 Vers le début des années 2000, différents types d'isolation ont alors été intégrés dans le noyau Linux : les *namespaces*. D'abord le namespace mount (un chroot++), puis PID (le processus isolé se voit comme le processus 1 sur le système, et n'a pas conscience des autres processus), puis NET pour l'isolation du network, etc. Il y a à ce jour 7 namespaces. Si le sujet vous passionne et que vous voulez en savoir plus, [cet article](https://en.wikipedia.org/wiki/Linux_namespaces) dans Wikipédia est un bon point de départ.
 
-## Des namespaces aux cgroups
+### Des namespaces aux cgroups
 
 Si je devais faire une analogie (et c'est une analogie que je fais souvent), on peut considérer les namespaces comme une limite de ce qu'un processus peut voir. Si je reprends mes exemple, mettre un processus dans le namespace mount va réduire la visibilité qu'il a sur le système de fichiers pour le restreindre à la partie qu'on lui permet (tout en lui faisant croire qu'il a tout le système de fichiers à sa disposition).
 
@@ -65,7 +65,7 @@ C'est un tableau d'ensemble, mais si vous voulez comprendre les bits et les byte
 
 Les namespaces ont fait leur entrée dans le noyau Linux en 2003, contre 2006 pour les cgroups. Ces repères histoiriques n'ont pour but que de souligner que **les conteneurs modernes sont intimement liés aux fonctionnalités du noyaux Linux**, alors n'espérez pas les utiliser nativement sur Windows ou Mac.
 
-# J'ai un penguoin dans ma salade
+## J'ai un penguoin dans ma salade
 
 Je suis au courant : peu de personnes utilisent Linux sur leur laptop (par contre, sur votre téléphone il y a des chances pour que ce soit différent si vous utilisez Android). Mais vous avez peut-être entendu parler de Docker Desktop, de WSL ; j'en reparlerai le temps venu, tout comme je vous parlerai de Minikube.
 
