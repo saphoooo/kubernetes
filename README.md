@@ -1,4 +1,4 @@
-![Techno Monkeys](https://user-images.githubusercontent.com/13923756/75386722-778ffe00-58e2-11ea-95c9-fa0c8eaf54fe.png)
+![Techno Monkeys](https://user-images.githubusercontent.com/13923756/75512551-1f482180-59f2-11ea-8be5-f4ddfb659824.png)
 
 # Kubernetes
 
