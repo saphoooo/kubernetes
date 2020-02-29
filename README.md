@@ -4,7 +4,7 @@
 
 ## Intro
 
-> **Avertissement** : je ne sais pas où tout ça va me mener... On verra bien :-)
+> **Avertissement** : Il ne s'agit pas un livre, plus d'une sorte de blog que je pourrais qualifié du guide le plus décalé pour comprendre Kubernetes
 
 Kubernetes est génial, et pas besoin d'être ingénieur chez Google ou chercheur au MIT pour en tirer le meilleur parti.
 
@@ -74,9 +74,11 @@ C'est un tableau d'ensemble, mais si vous voulez comprendre les bits et les byte
 
 ### Mini conclusion
 
-Je viens de vous faire entrevoir l'un des aspects fondamentaux des conteneurs : ils permettent d'isoler vos processus, et ce à plusieurs niveau. Du coup, vous pouvez bien faire tourner Python 2 et Python 3 sur la même machine, Java 8 et Java 11, Node 10 ou Node 12, peu importe : il n'y aura aucune collisions entre les librairies, dans la mesure où celles-ci sont idsolées.
+Je viens de vous faire entrevoir l'un des aspects fondamentaux des conteneurs : ils permettent d'isoler vos processus, et ce à plusieurs niveau (ressources, système de fichier, réseau...). Du coup, vous pouvez bien faire tourner Python 2 (mais plus personne ne fait ça) et Python 3 sur la même machine, Java 8 et Java 11, Node 10 ou Node 12, peu importe : il n'y aura aucune collisions entre les librairies, puisque celles-ci sont idsolées.
 
 Les namespaces ont fait leur entrée dans le noyau Linux en 2003, contre 2006 pour les cgroups. Ces repères histoiriques n'ont pour but que de souligner que **les conteneurs modernes sont intimement liés aux fonctionnalités du noyaux Linux**, alors n'espérez pas les utiliser nativement sur Windows ou Mac.
+
+---
 
 ## J'ai un penguoin dans ma salade
 
