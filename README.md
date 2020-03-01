@@ -20,7 +20,7 @@ Comme je suis un blogueur et pas un Emile Zola, si j'écris comme je parle, pers
 
 Je ne sais pas ce qui vous pousse à apprendre Kubernetes, si c'est pour régler une bonne fois pour toutes les limitations que vous rencontrez avec les conteneurs, ou si c'est juste parce que c'est tendance et que vous êtes curieux ; l'un comme l'autre me vont.
 
-Le hic, c'est que dans un cas vous avez déjà (je l'espère) un bagage culturel conséquent, mais dans l'autre cas... pas nécessairement. Il n'y a pas de honte à ça, mais ça rend sans doute la courbe d'apprentissage un peu plus... compliquée. Cependant, je vais essayer de tout expliquer le plus simplement possible, mais tout de même, un petit avertissement :
+Le hic, c’est que dans un cas vous avez déjà (je l’espère) un bagage culturel/technologique conséquent, mais dans l’autre cas… pas nécessairement. Il n’y a pas de honte à ça, mais ça rend sans doute la courbe d’apprentissage un peu plus… compliquée. Cependant, je vais essayer de tout expliquer le plus simplement possible, mais tout de même, un petit avertissement :
 
 ## RTFM
 
@@ -43,34 +43,34 @@ Dans les années 70-80 (à l'époque où Starky et Hutch faisaient un tabac), qu
 
 ### chroot vite fait
 
-Votre système d'exploitation a des librairies peut-être dans `/lib` et des binaires dans `/bin`. Si lors de la compilation d'un paquet vous modifiez une de ces libraires ou un de ces binaires, alors vous pouvez dire adieu à votre système.
+Votre système d’exploitation a des librairies dans `/lib` par exemple, et des binaires dans `/bin`. Si lors de la compilation d'un paquet vous modifiez une de ces libraires ou un de ces binaires, alors vous pouvez dire adieu à votre système.
 
 Maintenant, imaginez que vous compiliez votre paquet dans `/var/foo`, et que vous fassiez croire au compilateur que vous êtes à la racine du système de fichiers `/` ou *root*. Les répertoires `/bin` et `/lib` que le compilateur voit sont en réalité `/var/foo/bin` et `/var/foo/lib`. Vous avez changé la racine pour le compilateur, et vous vous êtes ainsi prémuni d'une erreur fatale !
 
-Puis d'autres cas d'usage sont apparus : quand les ordinateurs ont commencé à être connectés, ce mécanisme a été repris pour isoler les intrus dans une prison (*jail*) sur les systèmes BSD (BSD est un Unix ; si vous utilisez un Mac, alors vous utilisez un système BSD :-)).
+Puis d’autres cas d’usage sont apparus : quand les ordinateurs ont commencé à être connectés, ce mécanisme a été repris pour isoler les intrus dans une prison (*jail*) sur les systèmes BSD (notamment FreeBSD). Les *jails* poussent l’isolation bien plus loin que ne le fait *chroot*, et ont l’avantage d’être relativement simples à mettre en oeuvre.
 
-Vers le début des années 2000, différents types d'isolation ont alors été intégrés dans le noyau Linux : les *namespaces*. D'abord le namespace mount (un chroot++), puis PID (le processus isolé se voit comme le processus 1 sur le système, et n'a pas conscience des autres processus), puis NET pour l'isolation du network, etc. Il y a à ce jour 7 namespaces. Si le sujet vous passionne et que vous voulez en savoir plus, [cet article](https://en.wikipedia.org/wiki/Linux_namespaces) dans Wikipédia est un bon point de départ.
+Vers le début des années 2000, différents types d'isolation ont alors été intégrés dans le noyau Linux : les *namespaces*. D'abord le namespace mount (un chroot++), puis PID (le processus isolé se voit comme le processus 1 sur le système, et n'a pas conscience des autres processus), puis NET pour l'isolation du network, IPC, etc. Il y a à ce jour 7 namespaces. Si le sujet vous passionne et que vous voulez en savoir plus, [cet article](https://en.wikipedia.org/wiki/Linux_namespaces) dans Wikipédia est un bon point de départ.
 
 ### Des namespaces aux cgroups
 
 Si je devais faire une analogie (et c'est une analogie que je fais souvent), on peut considérer les namespaces comme une limite de ce qu'un processus peut voir. Si je reprends mon exemple, mettre un processus dans le namespace mount va réduire la visibilité qu'il a sur le système de fichiers pour le restreindre à la partie qu'on lui permet (tout en lui faisant croire qu'il a tout le système de fichiers à sa disposition).
 
-Représetez-vous un processus comme un individu. Il est dans une boutique remplie d'autres personnes (qui sont eux-aussi d'autres procesus du même système). Maintenant, placer le processus dans une cabine d'essayage. Dans cet espace confiné, il se voit comme étant la seule personne du magazin ; il n'a plus conscience des autres, pourtant les autres personnes sont toujours là.
+Essayez de vous représenter un processus comme un individu. Il est dans une boutique remplie d’autres personnes (qui sont eux-aussi d’autres processus du même système). Maintenant, placez le processus dans une cabine d’essayage. Dans cet espace confiné, il est totalement seul, et il n’a plus conscience des autres se promenant dans le magasin ; pour autant, les autres personnes sont toujours là.
 
-Maintenant prenons un autre exemple : le processus est une personne qui travaille dans un open space. Il y a d'autres personnes qui travaillent avec lui dans le même open sapce, et afin qu'ils ne se gênent pas les uns les autres, on met une cloison autour de notre processus (à ce stade je devrais lui donner un nom, mettons qu'il s'appelle Calvin).
+Maintenant prenons un autre exemple : imaginez notre processus comme une personne qui travaille dans un open space. D’autres personnes travaillent avec lui dans ce même open space, et afin qu’ils ne se gênent pas les uns les autres, on met une cloison autour de notre processus (à ce stade je devrais lui donner un nom, alors disons qu’il s’appelle Calvin).
 
-Il est à présent seul et peut, par exemple, téléphoner sans perturber les autres. Mais quand Calvin est au téléphone, il aime faire les 100 pas. Son espace confiné étant trop exigu, il commence par pousser les cloisons (pour le bien de mon histoire, ce sont des cloisons fabriquées dans un matériaux révolutionnaire et extensibles à l'infini). Il va finir par pousser les cloisons jusqu'à arriver aux murs physiques de l'open space, et donc prendre tout l'espace disponible, au mépris des autres processus. Cependant ne le jugez pas trop durement, n'oubliez pas qu'il n'a pas conscience de l'existence des autres processus.
+Il est à présent seul et peut, par exemple, téléphoner sans perturber les autres. Mais quand Calvin est au téléphone, il aime faire les 100 pas. Son espace confiné étant trop exigu, il commence à pousser les cloisons (pour le bien de mon histoire, ce sont des cloisons fabriquées dans un matériaux révolutionnaire et extensibles à l’infini). Il va finir par pousser les cloisons jusqu’à arriver aux murs physiques de l’open space, et donc prendre tout l’espace disponible… au mépris des autres processus. Cependant ne le jugez pas trop durement, n’oubliez pas qu’il n’a pas conscience de l’existence des autres processus.
 
 Calvin n'a enfrein aucune règle : les namespaces ne font que limiter ce qu'il peut voir. Mais son comportement est des plus fâcheux pour les autres processus. C'est là qu'entre en jeu les *cgroups* (ou *control groups*) : les *cgroups* limitent ce que le processus peut faire.
 
-Calvin est dans l'open space, et nous décidons à nouveau de mettre des cloisons entre lui et les autres processus : c'est notre namespace. Nous décidons également que cet espace fait 4m², ce qui empêche Calvin de pousser les cloisons pour se donner plus d'espace (tout en lui laissant un espace nécessaire pour faire ce qu'il a à faire) : arrivé à la limite que nous lui avons fixé, il ne peut pas aller plus loin, et ne risque plus de déranger les autres processus. Ce sont nos cgroups.
+Calvin est dans l'open space, et nous décidons à nouveau de mettre des cloisons entre lui et les autres processus : c'est notre *namespace*. Nous décidons également que cet espace fait 4m², ce qui empêche Calvin de pousser les cloisons pour se donner plus d'espace (tout en lui laissant un espace nécessaire pour faire ce qu'il a à faire) : arrivé à la limite que nous lui avons fixé, il ne peut pas aller plus loin, et ne risque plus de déranger les autres processus. Ce sont nos *cgroups*.
 
-Si nous revenons à notre système d'exploitation, les cgroups vont permettre 
+Si nous revenons à notre système d'exploitation, les *cgroups* vont permettre 
 - de limiter les ressources qu'un processus peut consommer (mémoire)
 - de les prioritiser (cpu share, I/O)
 - et de les controler.
 
-C'est un tableau d'ensemble, mais si vous voulez comprendre les bits et les bytes, il y a des tonnes d'articles sur le sujet tout autour du web, sur [Wiikipédia](https://fr.wikipedia.org/wiki/Cgroups) bien entendu, mais aussi sur [kernel.org](https://www.kernel.org/doc/Documentation/cgroup-v1/cgroups.txt) et ailleurs. Et si vous voulez expérimenter les namespaces et les cgroups par vous même, je vous ai préparé un petit lab sur [Katacoda](https://katacoda.com/saphoooo/scenarios/namespaces-et-cgroups) (profitez-en, c'est totalement gratuit).
+C'est un tableau d'ensemble, mais si vous voulez comprendre les *bits* et les *bytes*, il y a des tonnes d'articles sur le sujet tout autour du web, sur [Wiikipédia](https://fr.wikipedia.org/wiki/Cgroups) bien entendu, mais aussi sur [kernel.org](https://www.kernel.org/doc/Documentation/cgroup-v1/cgroups.txt) et ailleurs. Et si vous voulez expérimenter les *namespaces* et les *cgroups* par vous même, je vous ai préparé un petit lab sur [Katacoda](https://katacoda.com/saphoooo/scenarios/namespaces-et-cgroups) (profitez-en, c'est totalement gratuit).
 
 ### Mini conclusion
 
@@ -80,8 +80,22 @@ Les namespaces ont fait leur entrée dans le noyau Linux en 2003, contre 2006 po
 
 ---
 
-## J'ai un penguoin dans ma salade
+## J'ai un pengouin dans ma salade
 
-Je suis au courant : peu de personnes utilisent Linux sur leur laptop (par contre, sur votre téléphone il y a des chances pour que ce soit différent si vous utilisez Android). Mais vous avez peut-être entendu parler de Docker Desktop, de WSL ; j'en reparlerai le temps venu, tout comme je vous parlerai de Minikube.
+Je ne sais pas quelle peut être votre réaction face à ce qui vient d'être dit, mais je peux assez bien m'imaginer que ça peut aller du : "C'est un truc de malade de s'imaginer que les conteneurs ont plus de 40 ans" à "Et alors ?" en passant par une grande variété de "Si c'est vrai, alors pourquoi on n'en parle que maintenant ?"
 
-Mais pour l'heure accordons nous sur ce point : quand vous faites tourner un conteneur Linux sous Windows ou sous Mac, vous l'exécutez en réalité dans une machine virtuelle, même si votre expérience utilisateur vous laisse penser le contraire (au passage merci aux ingénieurs de Docker d'avoir rendu cette magie si simple).
+Je pense vraiment qu'un historien de l'informatique devrait se pencher sur le sujet, car c'est tout à la fois passionnant et compliqué. Je vais essayer d'y apporter mon éclairage personnel, ma vision ; mais on sait tous qu'une histoire n'est jamais totalement neutre, et qu'elle est toujours une interprétation des faits. Cependant, ceci explique pourquoi Kubernetes.
+
+Tout d'abord, replaçons-nous dans un context historique, celui du début des années 2000 (vous vous sovenez, Matrix, Kaamelott). A cette époque, l'Open Source n'est qu'un mouvement clandestin, une mutinerie face à la propriété intellectuelle, Google n'est qu'un moteur de recherche, Amazon un marchant de livres, et le marché est dominé par Microsoft (Windows), Sun Microsystems (Solaris), IBM (Aix) et HP (UX). [Linux est un cancer](https://www.zdnet.fr/actualites/microsoft-a-un-jour-qualifie-linux-de-cancer-et-c-etait-une-grossiere-erreur-39887203.htm) tapis dans l'ombre....
+
+Le problème : les machines qui se trouvent dans les centres de données sont ce qu'on qualifie de gros systèmes, avec plusiseurs processeurs et des Giga octets de mémoire (à l'époque, cette unité de mesure était impresionnate) ; faire tourner une seule application sur un tel système n'a pas de sens, car peut d'applications sont en mesure de consommer toutes les ressources qui sont à leur disposition, et on se retouve vite à avoir des machines hors de prix qui passent la majeure partie de leur temps à ne rien faire. L'idée de "consolider son infrastructure" en exécutant plusieurs appliactions sur la même machine commence à faire son chemin.
+
+Ce phénomène entraîne l'essor d'une autre technologie, encore plus vieille que les conteneurs : les machines virtuelles. Désolé de vous l'apprendre si brutalement si vous ne le saviez pas, mais ce n'est pas VMware qui est à l'origine de la virtualisation, mais IBM et le MIT. Ceci dit, si VMware est à la place qu'il occupe, c'est parce qu'il a concentré ses efforts sur l'architecture x86, qui est aujourd'hui l'architecture la plus répandue.
+
+Virtualisation et conteneurisation sont deux réponses au même problème : comment peut-on faire tourner plusieurs applications sur un même système. Toutes deux ont leurs avantages et leur inconvénients, mais la conteneurisation a un model plus disruptif que la machine virtuelle. Il est en effet facile de se représenter une machine virtuelle : elle a un disque, un cpu, de la mémoire et une carte réseau. On y installe son système d'exploitation, et roule ma poule, on peut y installer son application. Mais isoler un processus, imaginer ses intérations avec la machine (disques, cpu, mémoire et réseau), n'a rien d'une évidence.
+
+Comment illustrer cette différence ? Votre machine virtuelle est une maison : elle est relié au réseau électrique, à l'eau, aux égoût, elle a sa porte d'entrée et sa boîte aux lettres. Elle fonctionne en toute autonomie, dans la mesure où on lui assure les services dont elle dépend : eau, électricité, courrier... Votre conteneur quant à lui est un appartement : lui aussi dispose de l'électricité, de l'eau et du courrier, mais ces différents services sont mutualisé au niveau de l'immeuble dans lequel il se trouve. Cette analogie a ses limites, mais elle est terriblement pertinente pour comprendre que la gestion d'une machine virtuelle et d'un conteneur sont profondément différent : dans le premier cas on dispose d'une grande liberté pour un coût plus élevé, dans le deuxième cas il faut se plier aux règles de la communauté, mais pour un coût largement réduit.
+
+Mais reprenons le fil de notre histoire. A cette époque, comme je l'ai mentionné, le marché est ségmenté entre différents Unix propriétaires (les systèmes BSD sont annecdotiques) et Windows qui n'implémente pas de technologie de conteneursisation. Les machines virtuelles deviennent donc la norme pour virtualiser une application exécutée sous Windows.
+
+A cette même époque Sun Microsystems quant à choisit la conteneurisation, avec les Zones Solaris, choix que fait également Google, mais sur Linux ([chez Google, tout tourne dans des conteneurs](https://www.infoq.com/fr/news/2014/06/everything-google-containers/)).
