@@ -4,7 +4,7 @@
 
 ## Intro
 
-> **Avertissement** : Il ne s'agit pas un livre, plus d'une sorte de blog que je pourrais qualifié du guide le plus décalé pour comprendre Kubernetes
+> **Avertissement** : Il ne s'agit pas d'un livre, plus d'une sorte de blog que je pourrais qualifié du guide le plus décalé pour comprendre Kubernetes
 
 Kubernetes est génial, et pas besoin d'être ingénieur chez Google ou chercheur au MIT pour en tirer le meilleur parti.
 
