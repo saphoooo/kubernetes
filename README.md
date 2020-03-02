@@ -98,9 +98,9 @@ Virtualisation et conteneurisation sont deux réponses à ce même problème : "
 
 Comment illustrer cette différence ? Imaginez que notre machine virtuelle est une maison : elle est reliée au réseau électrique, à l'eau, aux égoûts, elle a sa porte d'entrée et sa boîte aux lettres. Elle fonctionne en toute autonomie, dans la mesure où on lui assure les services dont elle dépend : eau, électricité, courrier... Votre conteneur quant à lui est un appartement : lui aussi dispose de l'électricité, de l'eau et du courrier, mais ces différents services sont mutualisés au niveau de l'immeuble dans lequel il se trouve. Cette analogie est terriblement pertinente pour comprendre que la gestion d'une machine virtuelle et celle d'un conteneur sont profondément différentes : dans le premier cas nous disposons d'une grande liberté pour un coût plus élevé (la maison), dans le deuxième cas il faut se plier aux règles de la copropriété, mais pour un coût largement plus faible (l'appartemment).
 
-Mais reprenons le fil de notre histoire. A cette époque, comme je l'ai mentionné, le marché est ségmenté entre différents Unix propriétaires et Windows qui n'implémente ni la conteneursisation ni la virtualisation. Dans ces circonstances, comment consolider son parc de serveurs Windows ?
+Mais reprenons le fil de notre histoire. A cette époque, comme je l'ai mentionné, le marché est ségmenté entre différents Unix propriétaires d'un côté et Windows de l'autre, ce dernier n'implémentant ni la conteneursisation ni la virtualisation. Dans ces circonstances, comment consolider son parc de serveurs Windows ?
 
-Savez-vous comment fonctionne une machine virtuelle ? Ce n'est un secret pour personne : à l'aide d'un hypervisuer. Du coup, si nous considérons toujours qu'une machine virtuelle est une maison, l'hyperviseur peut être comparer à une commune : elle gère les parcelles de terrain, et les rend constructibles en les réliants à différents services (eau, électricité, etc). Le conteneur lui n'a pas d'hyperviseur : il ne dépend que du système d'exploitation (l'immeuble).
+Savez-vous comment fonctionne une machine virtuelle ? Ce n'est un secret pour personne : à l'aide d'un hyperviseurr. Du coup, si nous considérons toujours qu'une machine virtuelle est une maison, l'hyperviseur peut être comparé à une commune : elle gère les parcelles de terrain, et les rend constructibles en les réliants à différents services (eau, électricité, etc). Le conteneur lui n'a pas d'hyperviseur : il ne dépend que du système d'exploitation (l'immeuble).
 
 Un hyperviseur sert donc à virtualiser une architecture spécifique, comme x86, et permet de faire tourner théoriquement n'importe quel système d'exploitation propre à cette architecture (il ne faut donc pas le confondre avec un émulateur).
 
@@ -110,7 +110,7 @@ A cette même époque pourtant Sun Microsystems mise la conteneurisation avec le
 
 ![cyborg-pinguin](https://user-images.githubusercontent.com/13923756/75623629-21ee7680-5bac-11ea-9f37-65bf62a3e42d.png)
 
-### Bref
+### En bref
 
 - Le modèle des mahines virtuelles s'est largement imposé vers le milieu ds années 2000 sous l'influence de 2 acteurs majeurs : VMware et Microsoft.
 - Sous Unix, il y a eu des initiatives aussi bien vers la machine virtuelle que vers la conteneursitation.
@@ -169,6 +169,8 @@ Mais je vous avais promis une meilleure métaphore sur les microservices, la voi
 
 ### Comme le temps passe
 
-Nous voici donc arrivés aux environs des années 2010, et bien que l'opinion semble pencher favorablement vers la machine virtuelle (mais lui a-t-on vraiment laissé le choix ?), la conteneurisation est toujours là, guettant son heure. Mais nous sommes à un tournant de l'histoire : Linux et le Cloud son sur le point de bouleverser ce qu'on croyait acquis !
+Nous voici déjà arrivés aux environs des années 2010, à l'époque où l'opinion semble pencher favorablement vers la machine virtuelle (mais lui a-t-on vraiment laissé le choix ?).
+
+La conteneurisation est toujours là, guettant son heure. Mais nous sommes à un tournant historique : Linux et le Cloud son sur le point de bouleverser ce que tout le monde croyait acquis !
 
 ---
