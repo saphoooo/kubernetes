@@ -102,11 +102,11 @@ Mais reprenons le fil de notre histoire. A cette époque, comme je l'ai mentionn
 
 Savez-vous comment fonctionne une machine virtuelle ? Ce n'est un secret pour personne : à l'aide d'un hyperviseur. Du coup, si nous considérons toujours qu'une machine virtuelle est une maison, l'hyperviseur peut être comparé à une commune : elle gère les parcelles de terrain, et les rend constructibles en les reliants à différents services (eau, électricité, etc). Le conteneur lui n'a pas d'hyperviseur : il ne dépend que du système d'exploitation (l'immeuble).
 
-Un hyperviseur sert donc à virtualiser une architecture spécifique, comme x86, et permet de faire tourner théoriquement n'importe quel système d'exploitation propre à cette architecture (il ne faut donc pas le confondre avec un émulateur).
+Un hyperviseur sert à virtualiser une architecture spécifique, comme x86, et permet de faire tourner théoriquement n'importe quel système d'exploitation propre à cette architecture (il ne faut donc pas le confondre avec un émulateur).
 
 De son côté, le conteneur est propre aux fonctionnalités du noyau d'un système d'exploitation (un conteneur Linux ne tournera pas sur BSD et vice versa). Or Windows (dans les années 2000, entendons-nous bien) n'implémente pas de technologie de conteneurisation ; impossible donc d'utiliser la conteneurisation pour isoler deux applications sur un système Windows. Par contre, il est possible de virtualiser Windows, et d'avoir une instance de Windows pour chaque application qu'on veut isoler. Il en découle qu'en l'absence d'autre choix, les machines virtuelles deviennent la norme pour virtualiser une application exécutée sous Windows.
 
-A cette même époque pourtant Sun Microsystems mise la conteneurisation avec les Zones Solaris, choix que fait également Google, mais avec les conteneurs Linux ([chez Google, tout tourne dans des conteneurs](https://www.infoq.com/fr/news/2014/06/everything-google-containers/), c'est bien connu). Pour l'anecdote, le système de conteneurisation de Google s'appelle Borg (retenez ce nom, nous en reparlerons).
+A cette même époque pourtant Sun Microsystems mise la conteneurisation avec les Zones Solaris (même si il ne met pas tous ses oeufs dans le même panier en misant dans le même temps sur l'hyperviseur et les LDOM), choix que fait également Google, mais avec les conteneurs Linux ([chez Google, tout tourne dans des conteneurs](https://www.infoq.com/fr/news/2014/06/everything-google-containers/), c'est bien connu). Google ne se laisse pas d'autre porte de sortie, c'est un choix très arrêté et plutôt audacieux pour l'époque (l'écosystème est loin d'être mature), et pour l'anecdote, le système de conteneurisation de Google s'appelle Borg (retenez ce nom, nous en reparlerons).
 
 ![cyborg-pinguin](https://user-images.githubusercontent.com/13923756/75623629-21ee7680-5bac-11ea-9f37-65bf62a3e42d.png)
 
@@ -167,7 +167,7 @@ Mais je vous avais promis une meilleure métaphore sur les microservices, la voi
 
 **Inconvénients** : l'ensemble du processus a pris plus de temps, et si quelque chose se passe mal à un moment (vous ne recevez pas de réponse du centre des impôts), il est difficile d'identifier où et pourquoi ça s'est mal passé : est-ce le centre des impôts qui n'a pas encore eu le temps de traiter votre demande, ou est-ce la poste qui a perdu votre courrier ?
 
-Il y a encore bien des choses à expliquer sur les microservices, aloes gardez cette image bien au chaud pour plus tard. Je vous l'ai dit, les microservices jouent un grand rôle dans cette histoire, il y a des chances pour que nous les recroisions tôt ou tard.
+Il y a encore bien des choses à expliquer sur les microservices, alors gardez cette image bien au chaud pour plus tard. Je vous l'ai dit, les microservices jouent un grand rôle dans cette histoire, il y a des chances pour que nous les recroisions tôt ou tard.
 
 ### Le monde est sur le point de basculer...
 
