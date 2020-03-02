@@ -175,6 +175,6 @@ Nous voici arrivés aux environs des années 2010, à l'époque où l'opinion se
 
 La conteneurisation est là, guettant son heure. Mais nous sommes à un tournant historique : Linux et le Cloud son sur le point de bouleverser ce que tout le monde croyait acquis !
 
-![Visage effrayé](https://user-images.githubusercontent.com/13923756/75716800-33c93a00-5cd0-11ea-8123-16ad7754ff22.png)
+![Visage effrayé](https://user-images.githubusercontent.com/13923756/75716885-6a06b980-5cd0-11ea-9510-29039a1bbf82.png)
 
 ---
