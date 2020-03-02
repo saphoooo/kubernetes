@@ -167,10 +167,14 @@ Mais je vous avais promis une meilleure métaphore sur les microservices, la voi
 
 **Inconvénients** : l'ensemble du processus a pris plus de temps, et si quelque chose se passe mal à un moment (vous ne recevez pas de réponse du centre des impôts), il est difficile d'identifier où et pourquoi ça s'est mal passé : est-ce le centre des impôts qui n'a pas encore eu le temps de traîter votre demande, ou est-ce la poste qui a perdu votre courrier ?
 
-### Comme le temps passe
+Il y a encore bien des choses à expliquer sur les microservices, aloes gardez cette image bien au chaud pour plus tard. Je vous l'ai dit, les microservices jouent un grand rôle dans cette histoire, il y a des chances pour que nous les recroisions tôt ou tard.
 
-Nous voici déjà arrivés aux environs des années 2010, à l'époque où l'opinion semble pencher favorablement vers la machine virtuelle (mais lui a-t-on vraiment laissé le choix ?).
+### Le mmonde est sur le point de basculer...
 
-La conteneurisation est toujours là, guettant son heure. Mais nous sommes à un tournant historique : Linux et le Cloud son sur le point de bouleverser ce que tout le monde croyait acquis !
+Nous voici arrivés aux environs des années 2010, à l'époque où l'opinion semble pencher favorablement vers la machine virtuelle (mais lui a-t-on vraiment laissé le choix ?)
+
+La conteneurisation est là, guettant son heure. Mais nous sommes à un tournant historique : Linux et le Cloud son sur le point de bouleverser ce que tout le monde croyait acquis !
+
+![Visage effrayé](https://user-images.githubusercontent.com/13923756/75716439-78a0a100-5ccf-11ea-8f8a-9031473a099c.png)
 
 ---
