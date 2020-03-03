@@ -80,6 +80,8 @@ Les namespaces ont fait leur entrée dans le noyau Linux en 2003, contre 2006 po
 
 ---
 
+![Deuxième partie](https://user-images.githubusercontent.com/13923756/75755820-addcdb80-5d2f-11ea-905c-8c3c715beb04.png)
+
 ## J'ai un pingouin dans ma salade
 
 Je ne sais pas quelle peut être votre réaction face à ce qui vient d'être dit, mais je peux assez bien m'imaginer que ça peut aller du : "C'est un truc de malade de s'imaginer que les conteneurs ont plus de 40 ans" au simple "Et alors ?" en passant par une grande variété de "Si c'est vrai, alors pourquoi on n'en parle que maintenant ?"
