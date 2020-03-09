@@ -41,13 +41,13 @@ Je m'excuse par avance s'il y a des défenseurs de la cause animale parmi vous, 
 
 Cette analogie illustre avec brio la propension que nous avons à nous tirer des balles dans le pied sans arrêt. Elle s'appelle *Pet vs Cattle* (ou animal de compagnie contre troupeau). 
 
-Vous vous souvenez au début notre l'histoire, je vous ai parlé de ces grosses machines hors de prix. Telle machine ne peut pas être remplacée aisément, et nous avons pris l'habitude de la traiter avec soin et un max d'attentions. Qu'elle vienne à tomber, et c'est la panique à bord, chacun doit y aller de sa personne pour qu'elle soit de nouveau opérationnelle le plus tôt possible. C'était peut-être ce qu'on pouvait faire de mieux à l'époque, en effet.
+Vous vous souvenez au début notre l'histoire, je vous ai parlé de ces grosses machines hors de prix. Une telle machine ne peut pas être remplacée aisément, et nous avons pris l'habitude de la traiter avec soin et un max d'attentions. Qu'elle vienne à tomber, et c'est la panique à bord, chacun doit y aller de sa personne pour qu'elle soit de nouveau opérationnelle le plus tôt possible. C'était peut-être ce qu'on pouvait faire de mieux à l'époque, en effet.
 
 Mais c'est bizarrement un modèle que nous avons pris l'habitude de conserver, même quand les machines sont devenues moins coûteuses, même quand les machines sont devenues virtuelles. On a mis en place des machines avec des noms sympas (Starky et Hutch n'est qu'un exemple parmi d'autres), montées et maintenues à la main.
 
 Et avec quelques opérations manuelles, nous étions capable de faire basculer un service de l'une à l'autre...
 
-Mais que l'une de ces machines vienne vraiment à mourir, et c'était la fin ! Comment remplacer une machine qui avait demander tant d'amour ? Elle était unique, et il faudrait peut-être des jours pour en remettre une nouvelle en place ; pendant ce temps, que va devenir Starsky sans Hutch ? Pourvu qu'il ne lui arrive rien !
+Mais que l'une de ces machines vienne vraiment à mourir, et c'était la fin ! Comment remplacer une machine qui avait demandé tant d'amour ? Elle était unique, et il faudrait peut-être des jours pour en remettre une nouvelle en place ; pendant ce temps, que va devenir Starsky sans Hutch ? Pourvu qu'il ne lui arrive rien !
 
 Ce bon vieux modèle de haute disponibilité a fait son temps : il n'est plus suffisant pour nous garantir contre les conséquences d'une lourde panne, dont tout le monde commence à prendre conscience que, quoi qu'on fasse, elle arrivera.
 
@@ -152,11 +152,11 @@ J'ai entendu une fabuleuse analogie à ce sujet (je crois qu'elle est d'Akshay M
 
 Savez vous ce qu'est un numéro ISBN ? ISBN signifie *International Standard Book Number*, ou Numéro International Normalisé du Livre. Quand un livre est édité, il est affublé de ce drôle de numéro, exemple ISBN-2-7654-1005-4.
 
-Si le livre "Le Guide le plus Décalé pour Comprendre Kubernetes" venait à être édité en 2020, sa première édition hériterait d'un numéro similaire, disons ISBN-1-2222-0000-1. Mettons que ce fameux guide soit si populaire qu'une édition de poche soit mise en vente, et elle portera le numéro ISBN-1-2222-0012-3. Une seconde édition est maintenant sous presse, et elle portera le numéro ISBN-1-2222-0172-4. Vous avez saisi le principe je pense.
+Si le livre "Le Guide le plus Décalé pour Comprendre Kubernetes" venait à être publié en 2020, sa première édition hériterait d'un numéro similaire, disons ISBN-1–2222–0000–1. Mettons que ce fameux guide soit si populaire qu'une édition de poche soit mise en vente ; elle est à son tour affublée du numéro ISBN-1–2222–0012–3. Une seconde édition est maintenant sous presse, cette fois avec le numéro ISBN-1–2222–0172–4. Vous avez saisi le principe je pense.
 
 Maintenant, si je demande à quelqu'un d'ouvrir la page 100 du livre portant la référence ISBN-1–2222–0000–1 je sais avec certitude ce qu'il va y trouver, car cette référence identifie de façon unique un livre, et tout autre variante de ce livre porte une autre référence. Par contre, si je demandais à quelqu'un d'ouvrir la page 100 du livre "Le Guide le plus Décalé pour Comprendre Kubernetes", je ne pourrais pas garantir ce qu'il y trouverait.
 
-C'est le principe du numéro de version : il désigne un objet immuable. Chaque fois que vous demandez une même version, vous avez exactement la même chose, à la virgule près. Aussi, si vous versionnez la configuration de vos machines (et j'entends par là logiciels et mises à jour), vous vous assurez de savoir avec précision ce que vous tournez. Si la version 319 à jamais fonctionné, elle fonctionnera toujours, toujours de la même manière.
+C'est le principe de l'immutabilité : à chaque objet son numéro de version, et donc pour chaque version, vous savez exactement ce que vous avez, à la virgule près. Aussi, si vous versionnez la configuration de vos machines (et j'entends par là logiciels et mises à jour), vous vous assurez de savoir avec précision ce que vous tournez. Si la version 319 à jamais fonctionné, elle fonctionnera toujours, toujours de la même manière.
 
 Sur ce principe, appliquer un patch à vos front-ends web peut ressembler à ceci :
 
@@ -179,12 +179,12 @@ La configuration de vos machines à cet instant comprend :
 - La version de son système d'exploitation
 - Sa version de patch
 - Sa version configuration
-- Sa version des ses binaires et de ses librairies
+- La version des binaires et des librairies
 - Votre application, versionnée elle-aussi, ça va sans dire
 
 Des versions, des versions partout !
 
-Si demain vous choisissez de déployer 100 fois votre application par jour, même si ça reste faisable, ça risque de devenir vite fastidieux, parce que préparer 100 modèles de machines prend du temps, même quand c'est automatisé, que la création et la destruction de machines prend du temps, même quand c'est automatisé, et parce que le démarrage d'une machine prend du temps.
+Mais si demain vous désirez déployer 100 fois votre application par jour, même si ça reste faisable, ça risque de devenir vite fastidieux, parce que préparer 100 modèles de machines prend du temps, même quand c'est automatisé, que la création et la destruction de machines prend du temps, même quand c'est automatisé, et parce que le démarrage d'une machine prend du temps.
 
 Encore une fois, nous pouvons nous poser la question : est-ce que la machine virtuelle est la meilleure abstraction que l'on puisse utiliser ? Ou le temps de la revanche des conteneurs est-elle sur le point d'arriver ?
 
