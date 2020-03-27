@@ -2,7 +2,7 @@
 
 Si vous êtes ici, c'est sans doute parce que vous avez apprécié les deux premiers épisodes de ce guide. Mais je préfère vous mettre en garde, les choses risquent de changer ! Et il est possible qu'après avoir écouté ce que j'avais à vous dire, vous ne m'aimiez plus du tout. Ceci dit, je ne suis pas payé pour être populaire, et à vrai dire je ne suis même pas payé du tout...
 
-Alors redresser votre siège, remontez vos tablettes, attachez vos ceintures et préparer vous à l'atterrissage.
+Alors redressez votre siège, remontez vos tablettes, attachez vos ceintures et préparez vous à l'atterrissage.
 
 Si vous avez jamais entendu quelqu'un dire que le cloud c'est simplement faire tourner son application sur la machine de quelqu'un d'autre, fuyez cette personne ! Il n'a simplement rien compris !
 
@@ -30,7 +30,7 @@ Autre exemple, les services dont l'application dépend, comme sa base de donnée
 
 Vous trouvez que j'enfonce des portes ouvertes ? Pourtant ça n'est pas évident pour tout le monde, et la véritable question c'est : pourquoi ?
 
-Rien ne vous oblige à adhérer à cette méthodologie, mais si vous rêver d'une application portable, extensible et résiliante, pensez **The Twelve-Factor App**.
+Rien ne vous oblige à adhérer à cette méthodologie, mais si vous rêvez d'une application portable, extensible et résiliante, pensez **The Twelve-Factor App**.
 
 ## L'abattoir
 
@@ -104,7 +104,7 @@ Maya me libère d'avoir à connaître 3 langues, et je n'ai même plus besoin de
 
 ## Cachez ce CPU que je ne saurais voir
 
-Ce qu'il y a de chouette dans tout ça, c'est que je n'ai qu'une seule langue à connaître, et que cette langue est on ne peut plus sobre. Du coup, commander 3 voitures de couleurs différentes devient d'une simplicité écoeurante :
+Ce qu'il y a de chouette dans tout ça, c'est que je n'ai qu'une seule langue à connaître, et que cette langue est on ne peut plus basique. Du coup, commander 3 voitures de couleurs différentes devient d'une simplicité écoeurante :
 
 ```
 for i in bleu rouge jaune ; do maya crée une voiture ${i} ; done
@@ -112,7 +112,7 @@ for i in bleu rouge jaune ; do maya crée une voiture ${i} ; done
 
 En retour, je recevrai 201, 201 et peut-être 500, malheureusement ça arrive, ce qui pourrait signifier que Maya est débordée par le travail que je lui donne.
 
-Mais quand bien même ! Ce que m'apprennent ces codes de retour :
+Mais quand bien même ! Ces codes de retour m'en apprennent beaucoup :
 - Maya n'a pas pu traiter la création de la voiture jaune, et que le problème vient d'elle et pas de moi (erreur 5xx)
 - deux de mes voitures sont déjà créées
 - pour la troisième, la jaune, il me faudra peut-être retenter ma chance dans une heure
@@ -133,7 +133,7 @@ Approvisionnement, et pas cycle de vie, c'est vrai ; pour gérer le cycle de vie
 
 Bravo, vous gérez de l'infrastructure avec du code, donc maintenant vous êtes un développeur ! Avouez, vous ne l'aviez pas vue venir celle-là. Pourtant, c'est une réalité, c'en est fini de jouer les gros barbus qui montent leur centre de calcul dans leur garage. Et parce que votre infrastructure est un code, il va maintenant vous falloir la gérer... comme du code, et commencer à utiliser un outil de gestion de version (Git), et aussi versionner vos déploiements.
 
-Repartons de notre simplissime exemple : un front-end présentant son port 80 sur internet et reliée à une base de données sur le port 5432. Imaginons que vous souhaitiez maintenant exposer le port 443 au lieu du port 80, pensez vous que vous aller faire une mise à jour de la règle dans le pare-feu ? Pas exactement : vous aller plus sûrement supprimer la règle et en créer une nouvelle (c'est moins source d'erreur, et plus simple pour tout le monde).
+Repartons de notre simplissime exemple : un front-end qui présente son port 80 sur internet et reliée à une base de données sur le port 5432. Imaginons que vous souhaitiez maintenant exposer le port 443 au lieu du port 80, pensez vous que vous aller faire une mise à jour de la règle dans le pare-feu ? Pas exactement : vous aller plus sûrement supprimer la règle et en créer une nouvelle (c'est moins source d'erreur, et plus simple pour tout le monde).
 
 - Première version de votre code : un front-end présentant son port 80 sur internet et reliée à une base de données sur le port 5432.
 - Deuxième version de votre code : un front-end présentant son port 443 sur internet et reliée à une base de données sur le port 5432.
@@ -144,7 +144,7 @@ N'oubliez pas que votre machine fait partie d'un troupeau, et qu'il y en a proba
 
 Une autre approche bien moins intuitive (à cause de notre éducation) : on crée une nouvelle machine contenant les mises à jour pour remplacer l'ancienne. L'ancienne portait la version 1, la nouvelle la version 2.
 
-D'un seul coup d'oeil, ou d'une seule commande, je peux m'assurer que mes 500 machines sont exactement à la même versions. Que quelque chose n'aille pas dans cette version, et je peux revenir à la version précédente, puisque c'est une configuration qui est connue. Je n'ai jamais de divergence, parce que je déploie toujours des nouvelles machines pour remplacer les anciennes.
+Maintenant, je peux m'assurer que mes 500 machines sont exactement à la même versions d'un seul coup d'oeil, ou d'une seule commande. Que quelque chose n'aille pas dans cette version, et je peux revenir à la version précédente, puisque c'est une configuration qui est connue. Je n'ai jamais de divergence, parce que je déploie toujours des nouvelles machines pour remplacer les anciennes.
 
 Ce motif s'appelle l'immutabilité.
 
@@ -154,7 +154,7 @@ Savez vous ce qu'est un numéro ISBN ? ISBN signifie *International Standard Boo
 
 Si le livre "Le Guide le plus Décalé pour Comprendre Kubernetes" venait à être publié en 2020, sa première édition hériterait d'un numéro similaire, disons ISBN-1–2222–0000–1. Mettons que ce fameux guide soit si populaire qu'une édition de poche soit mise en vente ; elle est à son tour affublée du numéro ISBN-1–2222–0012–3. Une seconde édition est maintenant sous presse, cette fois avec le numéro ISBN-1–2222–0172–4. Vous avez saisi le principe je pense.
 
-Maintenant, si je demande à quelqu'un d'ouvrir la page 100 du livre portant la référence ISBN-1–2222–0000–1 je sais avec certitude ce qu'il va y trouver, car cette référence identifie de façon unique un livre, et tout autre variante de ce livre porte une autre référence. Par contre, si je demandais à quelqu'un d'ouvrir la page 100 du livre "Le Guide le plus Décalé pour Comprendre Kubernetes", je ne pourrais pas garantir ce qu'il y trouverait.
+Maintenant, si je demande à quelqu'un d'ouvrir la page 100 du livre portant la référence ISBN-1–2222–0000–1, je sais avec certitude ce qu'il va y trouver, car cette référence identifie de façon unique un livre, et tout autre variante de ce livre porte une autre référence. Par contre, si je demandais à quelqu'un d'ouvrir la page 100 du livre "Le Guide le plus Décalé pour Comprendre Kubernetes", je ne pourrais pas garantir ce qu'il y trouverait.
 
 C'est le principe de l'immutabilité : à chaque objet son numéro de version, et donc pour chaque version, vous savez exactement ce que vous avez, à la virgule près. Aussi, si vous versionnez la configuration de vos machines (et j'entends par là logiciels et mises à jour), vous vous assurez de savoir avec précision ce que vous tournez. Si la version 319 à jamais fonctionné, elle fonctionnera toujours, toujours de la même manière.
 
