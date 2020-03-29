@@ -35,7 +35,7 @@ C'est une erreur que n'a pas commise LXC, et c'est la raison pour laquelle les p
 
 Steve Jobs restera peut-être longtemps et à jamais très controversé, mais il y une chose qu'il a toujours comprise : quelque soit la complexité de la technologie, l'expérience utilisateur doit toujours être simple et intuitive. Et qui a jamais eu un de ces vieux iPods entre les mains comprendra très bien ce que je veux dire. Mais faire simple, ce n'est pas simple.
 
-![iPod]()
+![iPod](https://miro.medium.com/max/402/1*DO0heb57diPyMnFrT943vQ.png)
 
 Or Docker a excellé dans ce domaine. Essaye-le, lancez `docker run hello-world` et voyez le résultat ! Bien sûr, "*hello world*" vous allez dire, quelle technologie n'a pas son "*hello world*" super simple, après quoi la marche suivante est 100km plus haut ?
 
@@ -74,7 +74,7 @@ Avoir une bonne documentation, c'est :
 
 La documentation doit être simple à trouver, simple à utiliser (il faudrait d'ailleurs en parler à tous ceux qui font des notices pour nos appareils ménagés), complète, à jour et… agréable à lire.
 
-![Documentation]()
+![Documentation](https://miro.medium.com/max/1080/1*TspEhPRxOPKfy6LG2M6jZA.jpeg)
 
 C'est idiot, mais passer du temps à faire une documentation pour ses utilisateurs peut faire la différence entre un succès planétaire et le plus total anonymat…
 
